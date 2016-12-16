@@ -18,9 +18,7 @@ body {
 }
 
 .left_field {
-    width: 200px;
-    display: inline-block;
-    margin-right: 20px;
+   margin: auto
 }
 
 .box {
@@ -35,14 +33,16 @@ body {
 .center_field {
     display: inline-block;
     vertical-align: middle;
-    margin-right: 20px;
+    margin: auto
 }
+/*
 
 .right_field {
     width: 200px;
     display: inline-block;
     vertical-align: middle;
 }
+*/
 
 .cont {
     width: 840px;
@@ -97,6 +97,39 @@ body {
 .arrow_left_right > button:last-child {
     float: right;
 }
+
+.floor_step {
+    margin-left: 4px;
+    margin-bottom: 4px;
+    padding: 0
+}
+.my_grid {
+    position: absolute;
+/*    background-color: red;*/
+    bottom: 0;
+    height: 180px
+}
+
+.step {
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;    
+    display: inline-block;
+    border: solid 1px red;
+    margin-left: -4px;
+    margin-bottom: -4px;
+    margin-top: -4px;
+}
+
+.step:hover {
+    border: solid 1px yellow;
+}
+
+
+
+
+
+
 
 
 

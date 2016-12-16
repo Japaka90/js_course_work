@@ -5,10 +5,11 @@ var house_place = document.getElementsByClassName('house_place'); // место 
 
 var check_basement = [];
 var check_floor = [];
+var check_roof = [];
 
 
 var button_dig = document.getElementsByClassName('dig');
-button_dig[0].addEventListener("click", function () {
+button_dig[0].addEventListener("click", function () {  //копаем фундамент
     if (check_floor.length == 0) {
         var hole = document.createElement('div');
         hole.style.backgroundColor = 'brown';
@@ -52,104 +53,161 @@ button_dig[0].addEventListener("click", function () {
 var button_floor = document.getElementsByClassName('floor');
 button_floor[0].addEventListener("click", function () {
     if (check_basement.length != 0) {
-        var wall = document.createElement('div');
-        wall.style.backgroundColor = 'white';
-        wall.style.width = '60px';
-        wall.style.height = '60px';
-        wall.style.position = 'absolute';
-        wall.style.bottom = 0;
-        house_place[0].appendChild(wall);
-        check_floor.push(wall);
-        if ($(check_basement[0]).width() > $(wall).width()) {
+        if (check_floor.length == 0) { //строим первый этаж
+            var floor = document.createElement('div');
+            floor.style.backgroundColor = 'white';
+            floor.style.width = '60px';
+            floor.style.height = '60px';
+            floor.style.position = 'absolute';
+            floor.style.bottom = 0;
+            house_place[0].appendChild(floor);
+            check_floor.push(floor);
+        
             this.addEventListener('keydown', function() {
-            switch(event.code) {
-                case 'ArrowDown':
-                    if ($(wall).height() > 60) {
-                        wall.style.height = $(wall).height()-60 + 'px';
-                    }
-                    break;
+            switch(event.code) {                    
                 case 'ArrowRight':
-                    if ($(wall).width() <= ($(house_place).width())-60) {
-                        wall.style.width = $(wall).width()+60 + 'px';
-                    }
-
-                    break;
-                case 'ArrowUp':
-                    if ($(wall).height() <= ($(house_place).height())-60) {
-                        wall.style.height = $(wall).height()+60 + 'px';
-                    }
+                    if ($(check_basement[0]).width() > $(floor).width() && check_floor.length == 1) {
+                    if ($(floor).width() <= ($(house_place).width())-60) {
+                        floor.style.width = $(floor).width()+60 + 'px'
+                    }}
                     break;
                 case 'ArrowLeft':
-                    if ($(wall).width() > 60) {
-                        wall.style.width = $(wall).width()-60 + 'px';
+                    if ($(floor).width() > 60 && check_floor.length == 1) {
+                        floor.style.width = $(floor).width()-60 + 'px'
                     }
-
                     break;
-
             }
         })
-        } 
-    } else {
+        } // закончили строить первый этаж
+        
+            //строим второй этаж
+            else if ($(check_basement[0]).height() >= 60 && check_floor.length == 1) { 
+                var floor2 = document.createElement('div');
+                floor2.style.backgroundColor = 'white';
+                floor2.style.width = '60px';
+                floor2.style.height = '60px';
+                floor2.style.position = 'absolute';
+                floor2.style.bottom = '60px';
+                house_place[0].appendChild(floor2);
+                check_floor.push(floor2);
+              
+                this.addEventListener('keydown', function() {
+                switch(event.code) {                    
+                    case 'ArrowRight':
+                        if ($(check_basement[0]).width() > $(floor2).width() && check_floor.length == 2) {
+                        if ($(floor2).width() <= ($(house_place).width())-60) {
+                            floor2.style.width = $(floor2).width()+60 + 'px'
+                        }}
+                        break;
+                    case 'ArrowLeft':
+                        if ($(floor2).width() > 60 && check_floor.length == 2) {
+                            floor2.style.width = $(floor2).width()-60 + 'px'
+                        }
+                        break;
+                }
+                }) 
+                
+                //?????? колонны
+                
+//                if ($(floor2).width() >= $(floor).width()+60) {
+//                    var column = document.createElement('div');
+//                    column.style.backgroundColor = 'white';
+//                    column.style.width = '2px';
+//                    column.style.height = '60px';
+//                    column.style.position = 'absolute';
+//                    column.style.left = $(floor).width() + 60 +'px';
+//                    house_place[0].appendChild(column);
+//                }
+        } // закончили строить второй этаж
+        
+           else if ($(check_basement[0]).height() >= 90 && check_floor.length == 2) { //строим третий этаж
+                var floor3 = document.createElement('div');
+                floor3.style.backgroundColor = 'white';
+                floor3.style.width = '60px';
+                floor3.style.height = '60px';
+                floor3.style.position = 'absolute';
+                floor3.style.bottom = '120px';
+                house_place[0].appendChild(floor3);
+                check_floor.push(floor3);
+              
+                this.addEventListener('keydown', function() {
+                switch(event.code) {                    
+                    case 'ArrowRight':
+                        if ($(check_basement[0]).width() > $(floor3).width() && check_floor.length == 3) {
+                        if ($(floor3).width() <= ($(house_place).width())-60) {
+                            floor3.style.width = $(floor3).width()+60 + 'px'
+                        }}
+                        break;
+                    case 'ArrowLeft':
+                        if ($(floor3).width() > 60 && check_floor.length == 3) {
+                            floor3.style.width = $(floor3).width()-60 + 'px'
+                        }
+                        break;
+                }
+                })    
+        } // закончили строить третий этаж
+    } 
+    else {
         alert('Сначала постройте фундамент!')
     }
 });
 
-
-
-
+// строим крышу
 var button_roof = document.getElementsByClassName('roof');
 button_roof[0].addEventListener("click", function () {
-    if (check_basement.length != 0) {
+    if (check_floor.length > 0) {
+        
         var loft = document.createElement('div');
-        loft.style.backgroundColor = 'white';
-        loft.style.width = '180px';
-        loft.style.height = '60px';
+        var loft_width = $(check_floor[(check_floor.length-1)]).width();        
         loft.style.position = 'absolute';
-        loft.style.bottom = 0;
+        loft.style.bottom = check_floor.length * 60 + 'px';
+        loft.style.borderLeft = loft_width/2 + 'px solid transparent';
+        loft.style.borderRight = loft_width/2 + 'px solid transparent';
+        loft.style.borderBottom = '30px solid red';
+        var x = 30;
         house_place[0].appendChild(loft);
         check_floor.push(loft);
-        
-        
-        if ($(check_basement[0]).width() > $(wall).width()) {
-            this.addEventListener('keydown', function() {
-            switch(event.code) {
-//                case 'ArrowDown':
-//                    if ($(wall).height() > 60) {
-//                        wall.style.height = $(wall).height()-60 + 'px';
-//                    }
-//                    break;
-                case 'ArrowRight':
-                    if ($(wall).width() <= ($(house_place).width())-60) {
-                        wall.style.width = $(wall).width()+60 + 'px';
-                    }
-
-                    break;
-//                case 'ArrowUp':
-//                    if ($(wall).height() <= ($(house_place).height())-60) {
-//                        wall.style.height = $(wall).height()+60 + 'px';
-//                    }
-//                    break;
-//                case 'ArrowLeft':
-//                    if ($(wall).width() > 60) {
-//                        wall.style.width = $(wall).width()-60 + 'px';
-//                    }
-//
-//                    break;
-
-            }
-        })
-        } 
+        this.addEventListener('keydown', function() {
+                switch(event.code) {                    
+                    case 'ArrowUp':
+                        x += 10;
+                        loft.style.borderBottom = x + 'px solid red';
+                        break;
+                    case 'ArrowDown':
+                        if (x > 10) {
+                            x -= 10;
+                            loft.style.borderBottom = x + 'px solid red'
+                            break;
+                        }
+                }
+                })
     } else {
-        alert('Сначала постройте фундамент!')
+        alert('Сначала постройте постройте хотя бы один этаж')
     }
 });
 
+var delete_floor = document.getElementsByClassName('floor');
+button_floor[0].addEventListener("click", function () {
 
-this.addEventListener('onclick', function drawTriangle(context, left_padding, top_padding, height, width) {
-                    context.moveTo(0 + left_padding, 0 + height + top_padding);
-                    context.lineTo(width / 2 + left_padding, 0 + top_padding);
-                    context.lineTo(width + left_padding, 0 + height + top_padding);
-                    context.closePath();
-                })
 
- 
+
+
+// выбор места, откуда начнём строить
+var location1 = document.getElementById('location')
+location1.style.width = '60px';
+location1.style.height = '60px';
+location1.style.position = 'absolute';
+location1.style.bottom = 0;
+location1.style.background = 'yellow';
+
+location1.addEventListener('click', function() {
+    
+})
+
+
+
+
+
+
+
+

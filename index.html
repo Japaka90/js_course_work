@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="field left_field">
+    <div class="row container">
+        <div class="col-md-3">
             <div class="box">
                 <span>домострой</span><br>
             </div>
@@ -17,6 +17,9 @@
             </div>
             <div class="box">
                 <button class="floor">Построить этаж</button>
+            </div>
+            <div class="box">
+                <button class="delete_floor">Снести этаж</button>
             </div>
             <div class="box">
                 <button class="roof">Построить крышу</button>
@@ -40,11 +43,41 @@
                 </div>
             </div>
         </div>
-        <div class="field center_field">
+        <div class="col-md-6">
             <div class="cont">
                 <div id="sky">
                     <div class="house_place">
-
+                        <div id="location"></div>
+                        <div class="my_grid">
+                           <div class="floor_step">
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                        </div>
+                        <div class="floor_step">
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                        </div>
+                        <div class="floor_step">
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                        </div>                            
+                        </div>
+                        
                     </div>
                 </div>
                 <div id="ground">
@@ -54,7 +87,7 @@
                 </div>
             </div>
         </div>
-        <div class="field right_field">
+        <div class="col-md-3">
              
         </div>
     </div>
