@@ -1,0 +1,104 @@
+body {
+    overflow-x: hidden;
+}
+
+.container {
+    background-color: #BEBD7F;
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+    height: 620px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 3px solid #999;
+}
+
+.left_field {
+    width: 200px;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.box {
+    padding: 10px;
+}
+
+.box > span {
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+.center_field {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+}
+
+.right_field {
+    width: 200px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.cont {
+    width: 840px;
+    height: 600px;
+}
+
+#sky {
+    width: 100%;
+    height: 70%;
+    position: relative;
+    border-bottom: 1px solid black;
+    background-color: aqua;
+}
+
+#ground {
+    width: 100%;
+    height: 30%;
+    background-color: darkgreen;
+}
+
+.ground_house {
+    width: 50%;
+    height: 50%;
+    margin: auto;
+    background-color: blue;
+}
+
+.house_place {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    bottom: 0;
+    margin-left: 25%;
+    background-color: blue;
+}
+
+.arrow {
+    width: 100px;
+    height: 100px;
+    background-color: darkorange;
+}
+
+.arrow > button {
+    display: block;
+}
+
+.arrow > button:first-child,
+.arrow > button:last-child {
+    margin: auto;
+}
+
+.arrow_left_right > button:last-child {
+    float: right;
+}
+
+
+
+
+
