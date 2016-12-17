@@ -265,54 +265,30 @@ small_cloud.style.top = '130px';
      var start = Date.now(); // сохранить время начала
      var timer = setInterval(function() {
       // вычислить сколько времени прошло с начала анимации
-          var timePassed = Date.now() - start;
-          if (timePassed >= 8500) {
-            clearInterval(timer); // конец через 2 секунды
-            return;
-      }      
-      big_cloud.style.left = timePassed / 10 + 'px';
-    }, 20)
-     function move_cloud_again() {
-         setInterval(move_big_cloud, 8500)
-     };
-     move_cloud_again()
+     var timePassed = Date.now() - start;          
+      big_cloud.style.left = (timePassed % ($(document).width()*10)) / 10 + 'px';
+    }, 20)          
  };
 function move_middle_cloud() {
      var start = Date.now(); // сохранить время начала
      var timer = setInterval(function() {
       // вычислить сколько времени прошло с начала анимации
-          var timePassed = Date.now() - start;
-          if (timePassed >= 9000) {
-            clearInterval(timer); // конец через 2 секунды
-            return;
-      }      
-      middle_cloud.style.left = timePassed / 9 + 'px';
-    }, 20)
-     function move_cloud_again() {
-         setInterval(move_middle_cloud, 9000)
-     };
-     move_cloud_again()
+     var timePassed = Date.now() - start;            
+      middle_cloud.style.left = (timePassed % ($(document).width()*9)) / 9 + 'px';
+    }, 20)   
  };
 function move_small_cloud(big_cloud) {
      var start = Date.now(); // сохранить время начала
      var timer = setInterval(function() {
       // вычислить сколько времени прошло с начала анимации
-          var timePassed = Date.now() - start;
-          if (timePassed >= 11000) {
-            clearInterval(timer); // конец через 2 секунды
-            return;
-      }      
-      small_cloud.style.left = timePassed / 11 + 'px';
-    }, 20)
-     function move_cloud_again() {
-         setInterval(move_small_cloud, 11000)
-     };
-     move_cloud_again()
+     var timePassed = Date.now() - start;    
+      small_cloud.style.left = (timePassed % ($(document).width()*11))/ 11 + 'px';
+    }, 20)     
  };
 // запустить облачка
-//move_big_cloud()
-//move_middle_cloud()
-//move_small_cloud()
+move_big_cloud()
+move_middle_cloud()
+move_small_cloud()
 
 
 
