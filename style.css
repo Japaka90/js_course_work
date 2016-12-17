@@ -131,9 +131,16 @@ body {
 }
 
 
+.tree_place_1 {
+    position: absolute;
+    bottom: 0
+}
 
-
-
+.tree_place_2 {    
+    position: absolute;
+    bottom: 0;
+    right: 0
+}
 
 
 

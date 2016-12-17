@@ -21,6 +21,7 @@ button_dig[0].addEventListener("click", function () {  //копаем фунда
             hole.style.backgroundColor = 'brown';
             hole.style.width = '60px';
             hole.style.height = '30px';
+            hole.style.backgroundImage = 'url(beton.jpg)';
             ground_house[0].appendChild(hole);
             check_basement.push(hole);
 
@@ -92,6 +93,8 @@ button_floor[0].addEventListener("click", function () {
             floor.style.backgroundColor = 'white';
             floor.style.width = '60px';
             floor.style.height = '60px';
+            floor.style.backgroundImage = 'url(ii.jpg)';
+            floor.style.backgroundPosition = 'bottom';
             floor.style.position = 'absolute';
             floor.style.bottom = 0;
             house_place[0].appendChild(floor);
@@ -125,13 +128,14 @@ button_floor[0].addEventListener("click", function () {
                 floor2.style.height = '60px';
                 floor2.style.position = 'absolute';
                 floor2.style.bottom = '60px';
+                floor2.style.backgroundImage = 'url(i.jpg)';
                 house_place[0].appendChild(floor2);
                 check_floor.push(floor2);
               
                 this.addEventListener('keydown', function() {
                 switch(event.code) {                    
                     case 'ArrowRight':
-                        if ($(check_basement[0]).width() > $(floor2).width() && check_floor.length == 2) {
+                        if ($(check_floor[0]).width() + 1 > $(floor2).width() && check_floor.length == 2) {
                         if ($(floor2).width() <= ($(house_place).width())-60) {
                             floor2.style.width = $(floor2).width()+60 + 'px'
                         }}
@@ -164,13 +168,14 @@ button_floor[0].addEventListener("click", function () {
                 floor3.style.height = '60px';
                 floor3.style.position = 'absolute';
                 floor3.style.bottom = '120px';
+               floor3.style.backgroundImage = 'url(i.jpg)';
                 house_place[0].appendChild(floor3);
                 check_floor.push(floor3);
               
                 this.addEventListener('keydown', function() {
                 switch(event.code) {                    
                     case 'ArrowRight':
-                        if ($(check_basement[0]).width() > $(floor3).width() && check_floor.length == 3) {
+                        if ($(check_floor[1]).width() + 1 > $(floor3).width() && check_floor.length == 3) {
                         if ($(floor3).width() <= ($(house_place).width())-60) {
                             floor3.style.width = $(floor3).width()+60 + 'px'
                         }}
@@ -200,7 +205,7 @@ button_roof[0].addEventListener("click", function () {
         loft.style.bottom = check_floor.length * 60 + 'px';
         loft.style.borderLeft = loft_width/2 + 'px solid transparent';
         loft.style.borderRight = loft_width/2 + 'px solid transparent';
-        loft.style.borderBottom = '30px solid red';
+        loft.style.borderBottom = '30px solid brown';        
         var x = 30;
         house_place[0].appendChild(loft);
         check_roof.push(loft);
@@ -208,12 +213,12 @@ button_roof[0].addEventListener("click", function () {
                 switch(event.code) {                    
                     case 'ArrowUp':
                         x += 10;
-                        loft.style.borderBottom = x + 'px solid red';
+                        loft.style.borderBottom = x + 'px solid brown';
                         break;
                     case 'ArrowDown':
                         if (x > 10) {
                             x -= 10;
-                            loft.style.borderBottom = x + 'px solid red'
+                            loft.style.borderBottom = x + 'px solid brown'
                             break;
                         }
                 }
@@ -304,6 +309,27 @@ move_small_cloud()
 //    
 //})
 
+// деревья
+var create_tree = document.getElementsByClassName('create_tree');
+create_tree[0].addEventListener('click', function(){
+    alert('Укажите место, где хотите построить дерево');
+    var tree_step = document.getElementsByClassName('tree_step');
+    for (var i=0; i < tree_step.length; i++) {
+//        tree_step[i].id = '' + i;
+        tree_step[i].addEventListener('click', function(){ 
+            var tree = document.createElement('span');            
+            tree.className = 'glyphicon glyphicon-tree-deciduous';
+            tree.setAttribute("aria-hidden", "true");
+            var tree_place = document.getElementsByClassName('tree_place_1');
+            this.appendChild(tree);
+            tree.style.fontSize = '50px';
+            tree.style.color = 'green';            
+            tree.style.position = 'absolute';
+            
+        }, false)
+    }
+    
+})
 
 
 
